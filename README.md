@@ -1,7 +1,9 @@
-Memory Allocator
-COMP 310 Assignment 4
+##Memory Allocator
+#COMP 310 Assignment 4
+#Amee Joshipura
+#Id: 260461226
 
-An implementation of the Standard C Library Functions malloc and free. It uses the boundary tag scheme and each block of free or allocated memory on the heap is refered to as a node. Each node has the following format (10 bytes of metadata):
+An implementation of malloc and free. It uses the boundary tag scheme and each block of free or allocated memory on the heap is refered to as a node. Each node has the following format (10 bytes of metadata):
 
 [ 1 byte | 4 bytes | Data bytes | 4 bytes | 1 byte ] //Note that the program output will omit the data bytes when printing a node
 
@@ -12,10 +14,10 @@ The malloc implementation uses either first fit or best fit algorithms to find a
 
 The best fit algorithm also loops through the nodes from the bottom of the heap to the top. As soon as it finds a free block large enough it stores a pointer to it. Then it continues searching and if it finds a smaller block that also is larger enough it stores that as an even better best fit pointer. Once finished looping it calls the first fit algorithm with a signal to start searching at the best fit pointer. This way the code is reused and the first fit algorithm will return a result at the first node it checks.
 
-Free
+##Free
 Free checks the adjacent nodes to see if they are free as well or not. If there are adjacent free nodes it merges with them, meaning that contiguous free nodes are overwritten as one large free node. Note that after the merge the data bytes may contain junk. If there are no adjacent free nodes, the tag bytes are simply overwritten to zero.
 
-Testing
+##Testing
 The test file first generates an array of random malloc sizes.
 Malloc function is called with those sizes sequentially using the best fit algorithm, printing each node as it is allocated and after they have all been allocated.
 Free is called on all those mallocs, printing each node as it is freed and after they have all been freed.
