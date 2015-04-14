@@ -1,7 +1,7 @@
-##Memory Allocator
-#COMP 310 Assignment 4
-#Amee Joshipura
-#Id: 260461226
+#Memory Allocator
+COMP 310 Assignment 4
+Amee Joshipura
+Id: 260461226
 
 An implementation of malloc and free. It uses the boundary tag scheme and each block of free or allocated memory on the heap is refered to as a node. Each node has the following format (10 bytes of metadata):
 
@@ -18,9 +18,9 @@ The best fit algorithm also loops through the nodes from the bottom of the heap 
 Free checks the adjacent nodes to see if they are free as well or not. If there are adjacent free nodes it merges with them, meaning that contiguous free nodes are overwritten as one large free node. Note that after the merge the data bytes may contain junk. If there are no adjacent free nodes, the tag bytes are simply overwritten to zero.
 
 ##Testing
-The test file first generates an array of random malloc sizes.
-Malloc function is called with those sizes sequentially using the best fit algorithm, printing each node as it is allocated and after they have all been allocated.
-Free is called on all those mallocs, printing each node as it is freed and after they have all been freed.
-The heap size and breakdown of the heap (#bytes allocated, free, metadata) is printed.
-Repeat with first fit algorithm.
-Output was analyzed to ensure proper functionality. Particularly that each malloc/free/heap breakdown call matches the printed nodes. Also important to check that the best fit is functioning correctly, i.e. the node used for the malloc should be the smallest one that can fit it.
+1. The test file first generates an array of random malloc sizes.
+2. Malloc function is called with those sizes sequentially using the best fit algorithm, printing each node as it is allocated and after they have all been allocated.
+3. Free is called on all those mallocs, printing each node as it is freed and after they have all been freed.
+4. The heap size and breakdown of the heap (#bytes allocated, free, metadata) is printed.
+5. Repeat with first fit algorithm.
+6. Output was analyzed to ensure proper functionality. Particularly that each malloc/free/heap breakdown call matches the printed nodes. Also important to check that the best fit is functioning correctly, i.e. the node used for the malloc should be the smallest one that can fit it.
